@@ -41,7 +41,6 @@ const App = () => {
       const response = await fetch(`${MAIN_URL}new/`, {});
 
       const data = await response.json();
-      console.log('DATA:', data);
       setDeckID(data.deck_id);
       await fetch(`${MAIN_URL}${data.deck_id}/shuffle/`);
     } catch (error) {

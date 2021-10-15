@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Image, StyleSheet, Text, View} from 'react-native';
 
 // constants
@@ -11,7 +11,6 @@ const GameScreen = ({deckID, highScore, setHighScore, endGame}) => {
   const [prediction, setPrediction] = useState(null);
 
   useEffect(() => {
-    console.log('Deck ID:', deckID);
     getNextCard();
   }, []);
 
@@ -20,7 +19,6 @@ const GameScreen = ({deckID, highScore, setHighScore, endGame}) => {
       const response = await fetch(`${MAIN_URL}${deckID}/draw/?count=1`, {});
 
       const data = await response.json();
-      console.log('DATA CARD:', data);
       setCurrentCard(data.cards[0]);
     } catch (error) {
       console.log('FETCH ERROR:', error);
